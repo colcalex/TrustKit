@@ -221,15 +221,14 @@ static unsigned int getAsn1HeaderSize(NSString *publicKeyType, NSNumber *publicK
     });
     
     // Update the cache on the filesystem
-//     if (self.spkiCacheFilename.length > 0)
-//     {
-//         NSData *serializedSpkiCache = [NSKeyedArchiver archivedDataWithRootObject:_spkiCache requiringSecureCoding:YES error:nil];
-//         if ([serializedSpkiCache writeToURL:[self SPKICachePath] atomically:YES] == NO)
-//         {
-          //  NSAssert(false, @"Failed to write cache");
-//             TSKLog(@"Could not persist SPKI cache to the filesystem");
-//         }
-//     }
+    if (self.spkiCacheFilename.length > 0)
+    {
+        NSData *serializedSpkiCache = [NSKeyedArchiver archivedDataWithRootObject:_spkiCache requiringSecureCoding:YES error:nil];
+        if ([serializedSpkiCache writeToURL:[self SPKICachePath] atomically:YES] == NO)
+        {
+            TSKLog(@"Could not persist SPKI cache to the filesystem");
+        }
+    }
     
     return subjectPublicKeyInfoHash;
 }
